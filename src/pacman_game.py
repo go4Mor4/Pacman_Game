@@ -16,9 +16,10 @@ class PacmanGame:
         self.game_map = game_map
         self.pacman_position = pacman_position
         self.ghost_position = ghost_position
+        self.block = 0
 
     def __setup_map(self):
-        self.game_map[self.pacman_position[0]][self.pacman_position[1]] = 'PM'
+        self.game_map[self.pacman_position[0]][self.pacman_position[1]] = 'P'
         self.game_map[self.ghost_position[0]][self.ghost_position[1]] = 'F'
 
     def write_game_map(self):
@@ -30,16 +31,31 @@ class PacmanGame:
                 print(self.game_map[i][j], end=" ")
             print('\n')
 
+    def __check_victory(self):
+        victory = True
+        for line in self.game_map:
+            if "." in line:
+                victory = False
+                break
+
+        return victory
+
+
     def run(self):
+        self.__setup_map()
         while True:
             self.write_game_map()
-            if keyboard.read_key() in move_dict.keys():
-                move = move_dict.get(keyboard.read_key())
-                game_map, pacman_position = Pacman(self.game_map, self.pacman_position, move).move_pacman()
-                self.game_map = game_map
-                self.pacman_position = pacman_position
+            if not self.__check_victory():
+                if keyboard.read_key() in move_dict.keys():
+                    move = move_dict.get(keyboard.read_key())
+                    game_map, pacman_position, block = Pacman(self.game_map, self.pacman_position, move, self.block).move_pacman()
+                    self.game_map = game_map
+                    self.pacman_position = pacman_position
+                    self.block = block
 
             else:
-                print("Tecla inválida")
+                break
 
             os.system('cls' if os.name == 'nt' else 'clear')
+
+        print("PARABENS VOCÊ VENCEU")

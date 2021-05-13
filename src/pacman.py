@@ -3,7 +3,7 @@ BAD_BLOCKS = ["="]
 
 
 class Pacman:
-    def __init__(self, game_map, pacman_position, move, block=0):
+    def __init__(self, game_map, pacman_position, move, block):
         self.game_map = game_map
         self.pacman_position = pacman_position
         self.move = move
@@ -53,10 +53,18 @@ class Pacman:
             return True
 
     def move_pacman(self):
-        if self._validate_move():
-            self.game_map[self.pacman_position[0]][self.pacman_position[1]] = " "
-            self.game_map[self.next_pacman_position_location[0]][self.next_pacman_position_location[1]] = "PM"
+        print(self.block)
+        if self.block != 0:
+            self.block -= 1
+            response = (self.game_map, self.pacman_position, self.block)
+        else:
+            if self._validate_move():
+                self.game_map[self.pacman_position[0]][self.pacman_position[1]] = " "
+                self.game_map[self.next_pacman_position_location[0]][self.next_pacman_position_location[1]] = "P"
 
-            response = (self.game_map, self.next_pacman_position_location)
+                response = (self.game_map, self.next_pacman_position_location, self.block)
+
+            else:
+                response = (self.game_map, self.pacman_position, self.block)
 
         return response
