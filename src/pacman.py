@@ -8,7 +8,6 @@ class Pacman:
         self.pacman_position = pacman_position
         self.move = move
         self.block = block
-        # self.move_status = move_status
 
     @property
     def current_move_status(self):
