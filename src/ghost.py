@@ -1,5 +1,5 @@
 from random import choice
-import copy
+from copy import deepcopy
 
 GOOD_BLOCKS = [".", " "]
 BAD_BLOCKS = ["="]
@@ -59,7 +59,7 @@ class Ghost:
         if self.output_map[next_ghost_position_location[0]][next_ghost_position_location[1]] in ENEMY_BLOCKS:
             self.lose = True
 
-        self.output_map[self.ghost_position[0]][self.ghost_position[1]] = copy.deepcopy(self.game_map[self.ghost_position[0]][self.ghost_position[1]])
+        self.output_map[self.ghost_position[0]][self.ghost_position[1]] = deepcopy(self.game_map[self.ghost_position[0]][self.ghost_position[1]])
         self.output_map[next_ghost_position_location[0]][next_ghost_position_location[1]] = "F"
 
         response = (self.output_map, next_ghost_position_location, self.lose)

@@ -1,9 +1,10 @@
+from src.pacman import Pacman
+from src.ghost import Ghost
+
 import os
 import time
 import keyboard
-from src.pacman import Pacman
-from src.ghost import Ghost
-import copy
+from copy import deepcopy
 
 move_dict = {
     'w': 'up',
@@ -22,7 +23,7 @@ class PacmanGame:
         self.output_map = None
 
     def __get_output_map(self):
-        output_map = copy.deepcopy(self.game_map)
+        output_map = deepcopy(self.game_map)
 
         output_map[self.pacman_position[0]][self.pacman_position[1]] = 'P'
         output_map[self.ghost_position[0]][self.ghost_position[1]] = 'F'

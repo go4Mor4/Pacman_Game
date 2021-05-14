@@ -1,9 +1,7 @@
 from src.pacman_game import PacmanGame
 
-# from pacman import Pacman
-
-p = [6, 1]
-f = [1, 6]
+p_start_position = [6, 1]
+f_start_position = [1, 6]
 
 # game_map = [
 #     ['=', '=', '=', '=', '=', '=', '=', '='],
@@ -25,4 +23,4 @@ game_map = [
     ['=', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '='],
     ['=', '=', '=', '=', '=', '=', '=', '=', '=', '=', '=', '=']]
 
-PacmanGame(game_map, p, f).run()
+PacmanGame(game_map, p_start_position, f_start_position).run()
