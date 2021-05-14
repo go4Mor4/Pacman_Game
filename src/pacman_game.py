@@ -33,11 +33,6 @@ class PacmanGame:
         qnt_lines = len(self.output_map)
         qnt_columns = len(self.output_map[0])
 
-        # for i in range(qnt_lines):
-        #     for j in range(qnt_columns):
-        #         print(self.game_map[i][j], end=" ")
-        #     print('\n')
-
         for i in range(qnt_lines):
             for j in range(qnt_columns):
                 print(self.output_map[i][j], end=" ")
@@ -63,8 +58,8 @@ class PacmanGame:
                 if keyboard.read_key() in move_dict.keys():
                     move = move_dict.get(keyboard.read_key())
                     game_map, output_map, pacman_position, block, lose = Pacman(self.game_map, self.output_map,
-                                                                          self.pacman_position,
-                                                                          move, self.block).move_pacman()
+                                                                                self.pacman_position,
+                                                                                move, self.block).move_pacman()
 
                     self.game_map = game_map
                     self.output_map = output_map
@@ -75,10 +70,9 @@ class PacmanGame:
                         print("VOCÊ PERDEU")
                         break
 
-
                     output_map, ghost_position, lose = Ghost(self.game_map,
-                                                       self.output_map,
-                                                       self.ghost_position).move_ghost()
+                                                             self.output_map,
+                                                             self.ghost_position).move_ghost()
                     self.output_map = output_map
                     self.ghost_position = ghost_position
 
