@@ -12,7 +12,7 @@ Before you begin, ensure you have met the following requirements:
 
 To install, follow these steps:
 
-* Install the project folder [here](https://github.com/go4Mor4/time-calculator/archive/main.zip), and unzip it.
+* Install the project folder [here](https://github.com/go4Mor4/Pacman_Game/archive/refs/heads/main.zip), and unzip it.
 
 * Go to project folder and type:
 ```
